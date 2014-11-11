@@ -64,6 +64,21 @@ void draw() {
     M.showCorner( corner_path[i], 4);
   }
   
+  
+  // display lines
+  stroke(red);
+  pt A;
+  pt B;
+    // Display corners within path
+  for(int i = 0; i<path_length-2; i++)
+  {
+      A = M.g( corner_path[i] );
+      B = M.g( corner_path[i+1] );
+      
+      show(A,B);
+  }
+  
+  
 
   }
 
