@@ -1,7 +1,15 @@
+
+
+
+
+
+
+
+
  // Kemble test code::
 void kemble_code(Mesh M)
 {
-  int path_length = 531;
+  int path_length = 431;
   
   int[] corner_path = new int[path_length];
   
@@ -53,4 +61,7 @@ void kemble_code(Mesh M)
       
       show(A,B);
   }
+  
+  
+  
 }

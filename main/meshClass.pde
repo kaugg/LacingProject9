@@ -683,12 +683,23 @@ void EBstats(int lCs) {
   }
 
 // PROJECT
-  void showLacing(float w) {
+  void showLacing(float w) 
+  {
+    
     strokeWeight(r);
-    for (int c=0; c<nc; c++) { 
-      pt A=ccg(s(n(c))), C = ccg(c), B = ccg(n(s(c))); //<>//
-      stroke(green); showEdge(C,A); stroke(red); showEdge(C,B); 
-      }
+    
+    for (int c=0; c<nc; c++) 
+    { 
+      pt A=ccg(s(n(c))), C = ccg(c), B = ccg(n(s(c)));
+      
+      //A.show(4);B.show(4);C.show(4);
+      
+      stroke(green); 
+      showEdge(C,A); 
+      
+      stroke(red); 
+      showEdge(C,B); 
+     }
       
     // bend curves so that red edges goes below the blue edge and green goes above it
     // trace curves and assign a different color to each (computed when 'w' is pressed)
@@ -697,6 +708,10 @@ void EBstats(int lCs) {
     // change wiring to have a single loop
     // animate weaving invasion (for example: bottom up, along loop, from selected corner...)
     // animate fly through the path of a loop
+    
+    
+    
+    
     
     strokeWeight(1);
     }
