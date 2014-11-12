@@ -64,11 +64,11 @@ void julio_code(Mesh M)
   
   
   //Last corner to test Bezier
-  int endBezier = M.s(M.n(startBezier);
+  int endBezier = M.s(M.n(startBezier));
   //calculate normal for end bezier here
   
   //call bezier for both normal control points here should generate a bezier curve to observe
-  bezier();
+  //bezier();
   
  }
 
