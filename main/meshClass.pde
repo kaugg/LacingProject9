@@ -194,6 +194,25 @@ void right() {previous(); opposite();};
 void back() {opposite();};
 void unswing() {c=u(c); };
 
+
+vec getCornerNormal(int c, float k, boolean positive)  //c is corner, k is constant to multiply by, boolean will return pos or neg normal
+{
+        vec N = Nt[t(c)].make(); 
+        N.makeUnit();  
+        
+        if( positive )
+        {
+          N.mul(k*r);
+        }
+        else
+        {
+          N.mul(-k*r);  // make normal negative
+        }   
+        
+        return N;
+}
+
+
 void writeCorner (int c) {println("c="+c+", n="+n(c)+", p="+p(c)+", o="+o(c)+", v="+v(c)+", t="+t(c)+", EB symbol="+triangleSymbol[t(c)]+"."+", nt="+nt+", nv="+nv ); }; 
 void writeCorner () {writeCorner (c);}
 void writeCorners () {for (int c=0; c<nc; c++) {println("T["+c+"]="+t(c)+", visible="+visible[t(c)]+", v="+v(c)+",  o="+o(c));};}
