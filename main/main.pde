@@ -23,8 +23,8 @@ void draw() {
   C1.track(C); C2.track(C1); C2.apply();  
   M.show();  
   
-  julio_code(M); // execute your code (located in julio_code tab, to keep things clean)
-  kemble_code(M); // execute my code (located in kemble_code tab, to keep things clean)
+  //julio_code(M); // execute your code (located in julio_code tab, to keep things clean)
+  //kemble_code(M); // execute my code (located in kemble_code tab, to keep things clean)
   
   //M.showLacing(0.5);
 
