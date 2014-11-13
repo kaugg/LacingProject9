@@ -29,16 +29,26 @@ void kemble_code(Mesh M)
         // cPt.show(r);  hide ball 
         stroke(magenta); 
         
-        vec N = M.getCornerNormal(c,10,true);
-        N.show(A);  // show the normal
+        vec N;
+        if( c%3 == 0 )
+        {
+            N = M.getCornerNormal(c,10,true); // compute the vertex normal for every other other corner 
+        }
+        else
+        {
+            N = M.getCornerNormal(c,10,false); // compute the negative vertex normal for every other corner
+        }
+        
+        
+        //N.show(A);  // show the normal
       
-       // A.addVec(N); // push A location up to Normal value
+         A.addVec(N); // push A location up to Normal value
       
         // end of Normal computing code
       
       
          //stroke(orange); 
-        //bezier(A.x, A.y, A.z, N.x, N.y, N.z, B.x, B.y, B.z, C.x, C.y, C.z);
+        
 
       
       
@@ -127,3 +137,47 @@ void kemble_code(Mesh M)
   }
 
 */
+
+
+
+// bezier function calls
+
+pt Bez(pt A, pt B, pt C, float s)
+{
+  pt ret = new pt();
+  
+  pt L1 = L(A,B,s);
+  pt L2 = L(B,C,s);
+  
+  ret = L(L1,L2,s);
+  
+  return ret;
+}
+
+
+
+pt Bez(pt A, pt B, pt C, pt D, float s)
+{
+  pt ret = new pt();
+  
+  pt L1 = Bez(A,B,C,s); // use the three param bez
+  pt L2 = Bez(B,C,D,s);
+  
+  ret = L(L1,L2,s);
+  
+  return ret;
+}
+
+
+
+pt Bez(pt A, pt B, pt C, pt D, pt E, float s)
+{
+  pt ret = new pt();
+  
+  pt L1 = Bez(A,B,C,D,s); // use the four param bez
+  pt L2 = Bez(B,C,D,E,s);
+  
+  ret = L(L1,L2,s);
+  
+  return ret;
+}

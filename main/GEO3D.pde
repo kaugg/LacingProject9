@@ -28,6 +28,8 @@ pt M(float a, pt A, float b, pt B, float c, pt C, float d, pt D){return A(M(a,A,
 vec M(vec U, vec V) {return new vec((U.x+V.x)/2.0,(U.y+V.y)/2.0,(U.z+V.z)/2.0); };                    // (U+V)/2
 vec M(float a, vec U, float b, vec V) {return new vec(a*U.x+b*V.x,a*U.y+b*V.y,a*U.z+b*V.z);}          // aU+bV 
 
+pt L(pt A, float s, pt B) {return new pt(A.x+s*(B.x-A.x),A.y+s*(B.y-A.y),A.z+s*(B.z-A.z)); };        // A+sAB
+
 // ===== interpolate
 pt S(pt A, float s, pt B) {return new pt(A.x+s*(B.x-A.x),A.y+s*(B.y-A.y),A.z+s*(B.z-A.z)); };  // A+sAB
 pt S(pt P, float s, vec V) {return new pt(P.x + s*V.x, P.y + s*V.y, P.z + s*V.z); }            // P+sV
