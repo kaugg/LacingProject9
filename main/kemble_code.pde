@@ -10,6 +10,10 @@
 void kemble_code(Mesh M)
 {
  
+  M.showTriangles = false;
+  M.showEdges = false;
+  
+  
    strokeWeight(1);
     
     //int c=0;
@@ -31,14 +35,18 @@ void kemble_code(Mesh M)
         // cPt.show(r);  hide ball 
         stroke(magenta); 
         
+        
+        
+        int tighten_amount = 4;  // amount to tighten curves
+        
         vec N;
         if( c%3 == 0 )
         {
-            N = M.getCornerNormal(c,10,true); // compute the vertex normal for every other other corner 
+            N = M.getCornerNormal(c,tighten_amount,true); // compute the vertex normal for every other other corner 
         }
         else
         {
-            N = M.getCornerNormal(c,10,false); // compute the negative vertex normal for every other corner
+            N = M.getCornerNormal(c,tighten_amount,false); // compute the negative vertex normal for every other corner
         }
         
         
@@ -58,11 +66,11 @@ void kemble_code(Mesh M)
       */
       
       // now that we have points A,C,B, we'll make a bezier curve from them:
-      strokeWeight(3);
+      strokeWeight(1);
       stroke(orange); 
       pt current;
       pt previous = B;
-      for (float s=0; s<=1; s=s+0.1 )
+      for (float s=0; s<=1.1; s=s+0.1 )
       {
          
         
