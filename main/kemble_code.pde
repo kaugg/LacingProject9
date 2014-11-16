@@ -12,8 +12,10 @@ void kemble_code(Mesh M)
  
    strokeWeight(1);
     
+    //int c=0;
+    
     for (int c=0; c<M.nc; c++) 
-    { 
+   { 
         // Basic weave crossing points
         pt A = M.ccg(c);            //  compute offset corner location
         pt C = M.ccg(M.s(M.n(c)));  //  compute offset corner location
@@ -45,21 +47,32 @@ void kemble_code(Mesh M)
          A.addVec(N); // push A location up to Normal value
       
         // end of Normal computing code
+    
       
-      
-         //stroke(orange); 
-        
-
-      
-      
-      
-      //A.show(4);B.show(4);C.show(4);
-      
+      /*  Hide original green blue code
       stroke(green); 
       showEdge(A,C); 
       
       stroke(red); 
       showEdge(A,B); 
+      */
+      
+      // now that we have points A,C,B, we'll make a bezier curve from them:
+      strokeWeight(3);
+      stroke(orange); 
+      pt current;
+      pt previous = B;
+      for (float s=0; s<=1; s=s+0.1 )
+      {
+         
+        
+          current = Bez(B, A, C, s);
+         
+          showEdge(previous,current); 
+          
+          previous = current;
+      }
+      
      }
       
     // bend curves so that red edges goes below the blue edge and green goes above it
@@ -146,10 +159,10 @@ pt Bez(pt A, pt B, pt C, float s)
 {
   pt ret = new pt();
   
-  pt L1 = L(A,B,s);
-  pt L2 = L(B,C,s);
+  pt L1 = L(A,s,B);
+  pt L2 = L(B,s,C);
   
-  ret = L(L1,L2,s);
+  ret = L(L1,s,L2);
   
   return ret;
 }
@@ -163,7 +176,7 @@ pt Bez(pt A, pt B, pt C, pt D, float s)
   pt L1 = Bez(A,B,C,s); // use the three param bez
   pt L2 = Bez(B,C,D,s);
   
-  ret = L(L1,L2,s);
+  ret = L(L1,s,L2);
   
   return ret;
 }
@@ -177,7 +190,7 @@ pt Bez(pt A, pt B, pt C, pt D, pt E, float s)
   pt L1 = Bez(A,B,C,D,s); // use the four param bez
   pt L2 = Bez(B,C,D,E,s);
   
-  ret = L(L1,L2,s);
+  ret = L(L1,s,L2);
   
   return ret;
 }

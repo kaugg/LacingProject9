@@ -28,7 +28,7 @@ pt M(float a, pt A, float b, pt B, float c, pt C, float d, pt D){return A(M(a,A,
 vec M(vec U, vec V) {return new vec((U.x+V.x)/2.0,(U.y+V.y)/2.0,(U.z+V.z)/2.0); };                    // (U+V)/2
 vec M(float a, vec U, float b, vec V) {return new vec(a*U.x+b*V.x,a*U.y+b*V.y,a*U.z+b*V.z);}          // aU+bV 
 
-pt L(pt A, float s, pt B) {return new pt(A.x+s*(B.x-A.x),A.y+s*(B.y-A.y),A.z+s*(B.z-A.z)); };        // A+sAB
+// pt L(pt A, float s, pt B) {return new pt(A.x+s*(B.x-A.x),A.y+s*(B.y-A.y),A.z+s*(B.z-A.z)); };        // A+sAB  LERP
 
 // ===== interpolate
 pt S(pt A, float s, pt B) {return new pt(A.x+s*(B.x-A.x),A.y+s*(B.y-A.y),A.z+s*(B.z-A.z)); };  // A+sAB
@@ -74,6 +74,7 @@ vec MouseDrag() {return V(mouseX-pmouseX,mouseY-pmouseY,0);};                   
 
 // ******************************************************************************************** POINTS 
 class pt { float x,y,z; 
+   pt () {}; 
   pt (float px, float py, float pz) {x = px; y = py; z = pz;};
   pt make() {return(new pt(x,y,z));};
   void show(int r) { pushMatrix(); translate(x,y,z); sphere(r); popMatrix();}; 
@@ -110,6 +111,9 @@ class pt { float x,y,z;
   boolean coplanar (pt A, pt B, pt C) {return(abs(tetVol(this,A,B,C))<0.0001);};
   boolean cw (pt A, pt B, pt C) {return(tetVol(this,A,B,C)>0.0001);};
   } ;
+ 
+ pt L(pt A, float s, pt B) {return new pt(A.x+s*(B.x-A.x),A.y+s*(B.y-A.y),A.z+s*(B.z-A.z)); };        // A+sAB 
+
  
 // ******************************************************************************************** VECTORS 
 class vec { float x,y,z; 
