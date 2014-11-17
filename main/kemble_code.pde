@@ -72,13 +72,12 @@ void kemble_code(Mesh M)
       pt previous = B;
       for (float s=0; s<=1.1; s=s+0.1 )
       {
-         
-        
-          current = Bez(B, A, C, s);
-         
+          // Draw Spine Curves
+          current = Bez(B, A, C, s);  
           showEdge(previous,current); 
-          
           previous = current;
+          
+          
       }
       
      }
