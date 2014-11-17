@@ -1,12 +1,5 @@
 
-
-
-
-
-
-
-
- // Kemble test code::
+// Kemble test code::
 void kemble_code(Mesh M)
 {
  
@@ -18,13 +11,17 @@ void kemble_code(Mesh M)
     
     //int c=0;
     
-    for (int c=0; c<M.nc; c++) 
+    pt current_vertex_for_corner = M.g(0);
+    
+   for (int c=0; c<M.nc; c++) 
    { 
+        current_vertex_for_corner = M.g(c);  // get vertex of point
+     
+     
         // Basic weave crossing points
         pt A = M.ccg(c);            //  compute offset corner location
         pt C = M.ccg(M.s(M.n(c)));  //  compute offset corner location
         pt B = M.ccg(M.n(M.s(c)));  //  compute offset corner location
-      
       
         // beginning of normal computing code
         
@@ -34,8 +31,6 @@ void kemble_code(Mesh M)
         noStroke(); 
         // cPt.show(r);  hide ball 
         stroke(magenta); 
-        
-        
         
         int tighten_amount = 4;  // amount to tighten curves
         
@@ -56,29 +51,64 @@ void kemble_code(Mesh M)
       
         // end of Normal computing code
     
-      
-      /*  Hide original green blue code
-      stroke(green); 
-      showEdge(A,C); 
-      
-      stroke(red); 
-      showEdge(A,B); 
-      */
-      
-      // now that we have points A,C,B, we'll make a bezier curve from them:
-      strokeWeight(1);
-      stroke(orange); 
-      pt current;
-      pt previous = B;
-      for (float s=0; s<=1.1; s=s+0.1 )
-      {
-          // Draw Spine Curves
-          current = Bez(B, A, C, s);  
-          showEdge(previous,current); 
-          previous = current;
           
+          /*  Hide original green blue code
+          stroke(green); 
+          showEdge(A,C); 
           
-      }
+          stroke(red); 
+          showEdge(A,B); 
+          */
+      
+          vec ux = new vec(3,0,0);  // unit vectors
+          vec uy = new vec(0,3,0);
+          vec uz = new vec(0,0,3);
+      
+      
+          // now that we have points A,C,B, we'll make a bezier curve from them:
+          strokeWeight(1);
+          pt current;
+          pt previous = B;
+          for (float s=0; s<=1.1; s=s+0.1 )
+          {
+              // Draw ORIGINAL Spine Curves
+              current = Bez(B, A, C, s);  
+              
+              stroke(orange); 
+              showEdge(previous,current);
+             
+              //---------------------------------
+              // Draw actra spline lines
+             
+              stroke(green); 
+              previous.addVec(uz);
+              current.addVec(uz);
+              showEdge(previous,current);
+             
+              stroke(red); 
+              previous.addVec(ux);
+              current.addVec(ux);
+              showEdge(previous,current);
+              
+              stroke(blue); 
+              previous.addVec(uy);
+              current.addVec(uy);
+              showEdge(previous,current);
+
+              // revert points back to previous states
+              previous.subVec(uz);
+              current.subVec(uz);
+              
+              previous.subVec(ux);
+              current.subVec(ux);
+              
+              previous.subVec(uy);
+              current.subVec(uy);
+              
+              //////////////////----------------
+              
+              previous = current; 
+          }
       
      }
       
@@ -103,7 +133,7 @@ void kemble_code(Mesh M)
 /*
   // OLD CODE
 
- int path_length = 431;
+  int path_length = 1000;
   
   int[] corner_path = new int[path_length];
   
