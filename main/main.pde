@@ -4,11 +4,18 @@ import processing.opengl.*;                // load OpenGL
 String [] fn=  {"bunny.vts","horse.vts","torus.vts","tet.vts","fandisk.vts","squirrel.vts","venus.vts"};
 int fni=0; int fniMax=fn.length;  
 
+boolean show_kemble_code = true;
+boolean show_lacing_code = false;
+
 // ** SETUP **
 void setup() { size(800, 800, OPENGL); setColors(); sphereDetail(6); //smooth();
   PFont font = loadFont("Courier-14.vlw"); textFont(font, 12);  // font for writing labels on screen
   M.declare(); M.makeGrid(10); M.init();
   initView(M);  
+  
+    // Default turn off mesh edges and triangles
+    M.showTriangles =  false; 
+    M.showEdges = false;
   } 
  
 // ** DRAW **
@@ -25,10 +32,18 @@ void draw() {
   
   //julio_code(M); // execute your code (located in julio_code tab, to keep things clean)
   
-  kemble_code(M); // execute my code (located in kemble_code tab, to keep things clean)
+  if(show_kemble_code)
+  {
+    kemble_code(M); // execute my code (located in kemble_code tab, to keep things clean)
+  }
   
-  //M.showLacing(0.5);
-
+  if(show_lacing_code)
+  {
+    M.showLacing(0.5);
+  }
+  
+  
+  
   }
 
 //***      KEY ACTIONS (details in keys tab)

@@ -1,10 +1,12 @@
 
+
+
+
 // Kemble test code::
 void kemble_code(Mesh M)
 {
  
-  M.showTriangles = false;
-  M.showEdges = false;
+
   
   
    strokeWeight(1);

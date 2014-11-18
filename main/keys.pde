@@ -80,6 +80,12 @@ void keys() {
   if (key=='Y') {}; 
   if (key=='Z') {C.F.setToPoint(Cbox); C.D=Rbox*2; C.U.setTo(0,1,0); C.E.setToPoint(C.F); C.E.addVec(new vec(0,0,1)); C.pullE(); C.pose(); println("resert view"); }; 
 
+  // Kemble hotkeys
+  if (key=='7') {  show_kemble_code = !show_kemble_code; };  /// toggle kemble code
+  if (key=='8') {  show_lacing_code = !show_lacing_code; };  // toggle jarec lacing
+  if (key=='9') {}; 
+
+
   if (keyCode==LEFT) {M.left(); M.right(); M.left(); if (jumps) {C.jump(M);};};
   if (keyCode==RIGHT) {M.right(); M.left(); M.right(); if (jumps) {C.jump(M);};};
   if (keyCode==DOWN) {M.back(); M.left(); M.right(); M.right(); M.left(); M.back(); if (jumps) {C.jump(M);}; };
