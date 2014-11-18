@@ -83,7 +83,7 @@ void keys() {
   // Kemble hotkeys
   if (key=='7') {  show_kemble_code = !show_kemble_code; };  /// toggle kemble code
   if (key=='8') {  show_lacing_code = !show_lacing_code; };  // toggle jarec lacing
-  if (key=='9') {}; 
+  if (key=='9') { animation_s = M.nc; }   // set animation var to number of corners in mesh
 
 
   if (keyCode==LEFT) {M.left(); M.right(); M.left(); if (jumps) {C.jump(M);};};

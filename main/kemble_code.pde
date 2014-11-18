@@ -3,7 +3,7 @@
 
 
 // Kemble test code::
-void kemble_code(Mesh M)
+void kemble_code(Mesh M, float animation_s)
 {
  
 
@@ -15,7 +15,7 @@ void kemble_code(Mesh M)
     
     pt current_vertex_for_corner = M.g(0);
     
-   for (int c=0; c<M.nc; c++) 
+   for (int c=0; c<(M.nc - animation_s); c++) 
    { 
         current_vertex_for_corner = M.g(c);  // get vertex of point
      

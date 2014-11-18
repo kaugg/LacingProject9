@@ -7,6 +7,8 @@ int fni=0; int fniMax=fn.length;
 boolean show_kemble_code = true;
 boolean show_lacing_code = false;
 
+float animation_s = 0; // interpolitng animation value
+
 // ** SETUP **
 void setup() { size(800, 800, OPENGL); setColors(); sphereDetail(6); //smooth();
   PFont font = loadFont("Courier-14.vlw"); textFont(font, 12);  // font for writing labels on screen
@@ -16,6 +18,8 @@ void setup() { size(800, 800, OPENGL); setColors(); sphereDetail(6); //smooth();
     // Default turn off mesh edges and triangles
     M.showTriangles =  false; 
     M.showEdges = false;
+    
+    
   } 
  
 // ** DRAW **
@@ -34,8 +38,14 @@ void draw() {
   
   if(show_kemble_code)
   {
-    kemble_code(M); // execute my code (located in kemble_code tab, to keep things clean)
+    kemble_code(M, animation_s); // execute my code (located in kemble_code tab, to keep things clean)
   }
+  
+  if(animation_s > 1 )
+  {
+    animation_s = animation_s - 2;
+  }
+  
   
   if(show_lacing_code)
   {
