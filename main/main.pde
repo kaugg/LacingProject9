@@ -39,7 +39,7 @@ void draw() {
   
   if(show_lacing_code)
   {
-    M.showLacing(0.5);
+    M.showLacing(1);
   }
   
   

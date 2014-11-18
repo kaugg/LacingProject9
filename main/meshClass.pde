@@ -705,7 +705,7 @@ void EBstats(int lCs) {
   void showLacing(float w) 
   {
     
-    strokeWeight(r);
+    strokeWeight(w);
     
     for (int c=0; c<nc; c++) 
     { 
