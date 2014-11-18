@@ -20,7 +20,7 @@ void draw() {
   translate(float(height)/2, float(height)/2, 0.0);     // center view wrt window  
   if ((!keyPressed)&&(mousePressed)) {C.pan(); C.pullE(); };
   if ((keyPressed)&&(mousePressed)) {updateView();}; 
-  C1.track(C); C2.track(C1); C2.apply();  
+  //C1.track(C); C2.track(C1); C2.apply();  
   M.show();  
   
   //julio_code(M); // execute your code (located in julio_code tab, to keep things clean)

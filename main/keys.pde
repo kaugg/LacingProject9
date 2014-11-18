@@ -1,4 +1,4 @@
-boolean showHelpText=true;
+boolean showHelpText=true; 
   void showHelp() {
     fill(yellow,50); rect(0,0,height,height); pushMatrix(); translate(20,20); fill(0);
         text("                    MESH VIEWER written by Jarek Rossignac in June 2006, updated in February 2008",0,0); translate(0,20);
@@ -67,9 +67,9 @@ void keys() {
   if (key=='L') {M.findShortestEdge(); M.collapse(); M.left();}; 
   if (key=='M') {M.fanHoles();  println("mended holes by filling them with fans");   }; 
   if (key=='N') {M.showNormals=!M.showNormals; if(M.showNormals) println("showing normals"); else println("not showing normals"); };  
-  if (key=='O') { }; 
+  if (key=='O') {traceSpline(M);};  
   if (key=='P') {M.computePath(); M.showDistance=true; println("showing path"); println("not showing path"); };
-  if (key=='Q') { }; 
+  if (key=='Q') {}; 
   if (key=='R') {M.splitEdges(); M.bulge(); M.splitTriangles(); M.init(); print("Refined the mesh");};   // refine mesh
   if (key=='S') {M.computeLaplaceVectors(); M.tuck(0.6); M.computeLaplaceVectors(); M.tuck(-0.6); println("Smoothed the mesh");};  
   if (key=='T') {M.showTriangles=!M.showTriangles; if(M.showTriangles) println("showing triangles"); else println("not showing triangles"); }; 
